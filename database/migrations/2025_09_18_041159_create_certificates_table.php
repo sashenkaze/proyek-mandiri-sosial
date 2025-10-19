@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('registration_id')
                   ->constrained('registrations')
-                  ->onDelete('cascade');
+                  ->cascadeOnDelete();
             $table->string('certificate_number')->unique();
-            $table->date('issued_at');
+            $table->date('issued_at')->nullable();
+            $table->boolean('is_generated')->default(false);
             $table->string('file_path')->nullable();
             $table->timestamps();
         });

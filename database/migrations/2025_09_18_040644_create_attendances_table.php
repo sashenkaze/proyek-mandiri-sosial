@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('registration_id')->constrained('registrations')->onDelete('cascade');
+            $table->foreignId('registration_id')->constrained('registrations')->cascadeOnDelete();
             $table->enum('status', ['hadir', 'tidak_hadir', 'izin'])->default('hadir');
-            $table->timestamps(); 
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -12,9 +12,10 @@ return new class extends Migration {
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('activity_id')->constrained('activities');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('activity_id')->constrained('activities')->cascadeOnDelete();
             $table->enum('status', ['pending', 'approved', 'rejected', 'canceled'])->default('pending');
+            $table->unique(['user_id', 'activity_id']);
             $table->timestamps();
             $table->softDeletes();
         });

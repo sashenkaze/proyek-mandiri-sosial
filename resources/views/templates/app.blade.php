@@ -10,7 +10,7 @@
         href="https://devjobsindo.org/wp-content/uploads/2023/06/indorelawan_logo-merah_png-1-1536x1442.png"
         type="image/x-icon">
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
@@ -27,19 +27,21 @@
                 Aplikasi Sosial
             </a>
 
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 {{-- Cek role user --}}
                 @if (Auth::check() && Auth::user()->role === 'admin')
                     {{-- Navbar khusus Admin --}}
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link mx-3    "
+                        <li class="nav-item"><a class="nav-link mx-3"
                                 href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link mx-3    " {{-- href="{{ route('admin.activities.index') }}" --}}>Kegiatan</a></li>
-                        <li class="nav-item"><a class="nav-link mx-3    " {{-- href="{{ route('admin.registrations.index') }}" --}}>Pendaftaran</a></li>
+                        <li class="nav-item"><a class="nav-link mx-3"
+                                href="{{ route('admin.activities.index') }}">Kegiatan</a></li>
+                        <li class="nav-item"><a class="nav-link mx-3" {{-- href="{{ route('admin.registrations.index') }}" --}}>Pendaftaran</a></li>
                         <li class="nav-item dropdown">
                             <a data-mdb-dropdown-init class="nav-link mx-3   dropdown-toggle" href="#"
                                 id="navbarDropdownMenuLink" role="button" aria-expanded="false">View/List</a>
@@ -55,8 +57,8 @@
                     {{-- Navbar User biasa --}}
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/kegiatan">Kegiatan</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/organisasi">Organisasi</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Kegiatan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Organisasi</a></li>
                     </ul>
                 @endif
 
@@ -110,6 +112,7 @@
 
     {{-- yield versi js / dinamis isi js --}}
     @stack('script')
+
 </body>
 
 </html>
